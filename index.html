@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost calculator</title>
+    <script src="models.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <p>Model</p>
+    <select name="model" id="model">
+        <option value ="gpt-4o">gpt-4o</option>
+        <option value="gpt-4o-mini">gpt-4o-mini</option>
+        <option value ="gpt-4.1">gpt-4.1</option>
+        <option value ="gpt-4.1-mini">gpt-4.1-mini</option>
+        <option value ="gpt-o1">gpt-o1</option>
+        <option value ="gpt-o1-mini">gpt-o1-mini</option>
+        <option value ="claude-opus-4">claude-opus-4</option>
+        <option value ="claude-sonnet-4">claude-sonnet-4</option>
+        <option value ="claude-opus-3">claude-opus-3</option>
+        <option value ="claude-sonnet-3.7">claude-sonnet-3.7</option>
+        <option value ="claude-haiku-3.5">claude-haiku-3.5</option>
+        <option value ="gemini-2.5-pro">gemini-2.5-pro</option>
+        <option value ="gemini-2.5-flash">gemini-2.5-flash</option>
+    </select>
+    <br/>
+
+    <p>Number of Students</p>
+    <input type="range" id="numStudents" 
+        min = "0" max="1000" value = "481"
+        oninput = "updateLabel(this.id, this.value)"/>
+    <label for="numStudents" id="numStudentsLabel">481</label>
+    <p>Average Levels Completed Per Student</p>
+    <input type="range" id="numLevels" 
+        min = "0" max="48" value = "40"
+        oninput = "updateLabel(this.id, this.value)"/>
+    <label for="numLevels" id="numLevelsLabel">40</label>
+    <p>Average Prompts Per Level</p>
+    <input type="range" id="numPrompts" 
+        min = "0" max="10" value="3"
+        oninput = "updateLabel(this.id, this.value)"/>
+    <label for="numPrompts" id="numPromptsLabel">3</label>
+    <p>Average Tokens Per Prompt</p>
+    <input type="range" id="numInputTokens" 
+        min="0" max="1000" value = "682"
+        oninput = "updateLabel(this.id, this.value)"/>
+    <label for="numTokens" id="numInputTokensLabel">682</label>
+    <input type="range" id="numOutputTokens" 
+        min="0" max="1000" value = "100"
+        oninput = "updateLabel(this.id, this.value)"/>
+    <label for="numTokens" id="numOutputTokensLabel">100</label>
+    <script>
+        function updateLabel(item, value) {
+            document.getElementById(item + "Label").textContent = value;
+        }
+    </script>
+
+    <br/>
+    <button onclick = "calculate()">Calculate</button>
+    <p>Result:</p>
+    <p id="result">$156.13</p>
+</body>
+</html>
